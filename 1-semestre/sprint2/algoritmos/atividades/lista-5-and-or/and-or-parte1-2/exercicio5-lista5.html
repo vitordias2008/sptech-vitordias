@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercício 5 - Lista 5</title>
+  </head>
+  <body>
+    <h1>Processo Seletivo Mentes Brilhantes</h1>
+
+    <label>Nota do ENEM:</label>
+    <br />
+    <input type="number" id="ipt_enem" />
+
+    <br /><br />
+
+    <label>Nota do vestibular interno:</label>
+    <br />
+    <input type="number" id="ipt_vestibular" />
+
+    <br /><br />
+
+    <button onclick="avaliacao()">Avaliação</button>
+
+    <script>
+      function avaliacao() {
+        let enem = Number(ipt_enem.value);
+        let vestibular = Number(ipt_vestibular.value);
+
+        if (enem >= 800 || vestibular >= 700) {
+          alert("Parabéns! Aprovado");
+        } else {
+          alert("Tente semestre que vem!");
+        }
+      }
+    </script>
+  </body>
+</html>

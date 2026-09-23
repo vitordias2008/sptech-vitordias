@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZA</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f355/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f355/512.webp" alt="Pizza" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: orange; color: black; font-size: 30px;">ROLA A PIZZA?</H1>
+
+<span style="color: red; width: max-content; height: max-content; font-size: 150% ">Valor da pizza:</span>
+<input type="text" id="ipt_valor" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: red; width: max-content; height: max-content; font-size: 150% ">Quantidade de amigos:</span>
+<input type="text" id="ipt_amigos" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="calcular_pizza()" style="width: max-content; height: max-content; font-size: 250%;">Rola a pizza?</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function calcular_pizza(){
+
+let valor = Number(ipt_valor.value)
+let amigos = Number(ipt_amigos.value)
+let valor_amigo = valor / amigos
+
+if (valor_amigo > 20){
+    div_exibir.innerHTML = `Cada amigo vai pagar R$${valor_amigo} pela pizza <br> Deu ruim! Pizza muito cara!`
+} else{
+    div_exibir.innerHTML = `Cada amigo vai pagar R$${valor_amigo} pela pizza`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

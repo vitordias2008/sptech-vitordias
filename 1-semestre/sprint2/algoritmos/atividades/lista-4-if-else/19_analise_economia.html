@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECONOMIA</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4b0/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4b0/512.webp" alt="Dinheiro" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: green; color: white; font-size: 30px;">ANÁLISE DE ECONOMIA</H1>
+
+<span style="color: green; width: max-content; height: max-content; font-size: 150% ">Sua meta de economia:</span>
+<input type="text" id="ipt_meta" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: green; width: max-content; height: max-content; font-size: 150% ">Quanto você tem guardado:</span>
+<input type="text" id="ipt_guardado" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="analisar_economia()" style="width: max-content; height: max-content; font-size: 250%;">Analisar economia</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function analisar_economia(){
+
+let meta = Number(ipt_meta.value)
+let guardado = Number(ipt_guardado.value)
+
+if (guardado >= meta){
+    if (guardado > meta){
+        let ultrapassou = guardado - meta
+        div_exibir.innerHTML = `Parabéns, meta alcançada! <br> Meta ultrapassada em ${ultrapassou}`
+    } else{
+        div_exibir.innerHTML = `Parabéns, meta alcançada!`
+    }
+} else{
+    let falta = meta - guardado
+    div_exibir.innerHTML = `Força! Ainda em busca da meta! Falta ${falta}`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

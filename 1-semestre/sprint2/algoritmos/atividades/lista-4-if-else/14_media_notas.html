@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÉDIA</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f393/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f393/512.webp" alt="Formatura" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: blue; color: white; font-size: 30px;">ANÁLISE DA MÉDIA DE NOTAS</H1>
+
+<span style="color: blue; width: max-content; height: max-content; font-size: 150% ">Primeira nota:</span>
+<input type="text" id="ipt_nota1" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: blue; width: max-content; height: max-content; font-size: 150% ">Segunda nota:</span>
+<input type="text" id="ipt_nota2" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="verificar_situacao()" style="width: max-content; height: max-content; font-size: 250%;">Verificar situação</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function verificar_situacao(){
+
+let nota1 = Number(ipt_nota1.value)
+let nota2 = Number(ipt_nota2.value)
+let media = (nota1 + nota2) / 2
+
+if (media >= 6){
+    alert('Parabéns, aprovado!')
+    div_exibir.innerHTML = `Média: ${media}`
+} else{
+    alert('Tente outra vez...')
+    div_exibir.innerHTML = `Média: ${media}`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

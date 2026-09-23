@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINANÇAS</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4b0/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4b0/512.webp" alt="Dinheiro" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: black; color: white; font-size: 30px;">VERIFICAÇÃO DAS FINANÇAS</H1>
+
+<span style="color: black; width: max-content; height: max-content; font-size: 150% ">Valor do saldo bancário:</span>
+<input type="text" id="ipt_saldo" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="verificar_financas()" style="width: max-content; height: max-content; font-size: 250%;">Verificar finanças</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function verificar_financas(){
+
+let saldo = Number(ipt_saldo.value)
+
+if (saldo == 0){
+    div_exibir.innerHTML = `<span style="color: black;">Conta zerada</span>`
+} else if (saldo < 0){
+    div_exibir.innerHTML = `<span style="color: red;">Está devendo!</span>`
+} else{
+    div_exibir.innerHTML = `<span style="color: blue;">Saldo positivo! sorriso</span>`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 2 - Lista 5</title>
+</head>
+<body>
+
+    <h1>Auxílio Covid-19</h1>
+
+    <label>Renda do usuário:</label>
+    <br>
+    <input type="number" id="ipt_renda">
+
+    <br><br>
+
+    <label>Renda total familiar:</label>
+    <br>
+    <input type="number" id="ipt_renda_familiar">
+
+    <br><br>
+
+    <button onclick="verificarAjuda()">Verificar ajuda</button>
+
+    <script>
+
+        function verificarAjuda() {
+
+            let renda = Number(ipt_renda.value);
+            let rendaFamiliar = Number(ipt_renda_familiar.value);
+
+            if (renda <= 1050 && rendaFamiliar <= 2100) {
+
+                alert("Você terá direito!");
+
+            } else {
+
+                alert("Você NÃO terá direito");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

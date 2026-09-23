@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 3 - Lista 5</title>
+</head>
+<body>
+
+    <h1>Validação de Notas</h1>
+
+    <label>Nota do aluno:</label>
+    <br>
+    <input type="number" id="ipt_nota">
+
+    <br><br>
+
+    <button onclick="avaliarAluno()">Avaliar aluno</button>
+
+    <script>
+
+        function avaliarAluno() {
+
+            let nota = Number(ipt_nota.value);
+
+            if (nota >= 0 && nota <= 10) {
+
+                alert("Nota válida!");
+
+            } else {
+
+                alert("Onde já se viu nota menor que 0 e maior que 10?!");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

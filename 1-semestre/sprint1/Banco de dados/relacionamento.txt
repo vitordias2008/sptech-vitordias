@@ -1,0 +1,3 @@
+Relacionamento 1:1 - escolhe uma tabela e vapo
+
+Relacionamento 1:N - FK fica na tabela com N

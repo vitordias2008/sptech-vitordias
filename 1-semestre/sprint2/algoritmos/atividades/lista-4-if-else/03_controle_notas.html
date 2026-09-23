@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTAS</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4af/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4af/512.webp" alt="Notas" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: blue; color: white; font-size: 30px;">CONTROLE DE NOTAS</H1>
+
+<span style="color: blue; width: max-content; height: max-content; font-size: 150% ">Insira a primeira nota:</span>
+<input type="text" id="ipt_nota1" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: blue; width: max-content; height: max-content; font-size: 150% ">Insira a segunda nota:</span>
+<input type="text" id="ipt_nota2" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: blue; width: max-content; height: max-content; font-size: 150% ">Insira a terceira nota:</span>
+<input type="text" id="ipt_nota3" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="analisar_desempenho()" style="width: max-content; height: max-content; font-size: 250%;">Analisar desempenho</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function analisar_desempenho(){
+
+let nota1 = Number(ipt_nota1.value)
+let nota2 = Number(ipt_nota2.value)
+let nota3 = Number(ipt_nota3.value)
+let media = (nota1 + nota2 + nota3) / 3
+
+if (media > 9.4){
+    div_exibir.innerHTML = `Sua média foi de ${media} <br> Parabéns, você é fora de série!`
+} else{
+    div_exibir.innerHTML = `Sua média foi de ${media}`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

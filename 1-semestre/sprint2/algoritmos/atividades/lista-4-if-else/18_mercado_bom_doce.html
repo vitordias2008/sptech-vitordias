@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM DOCE</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f36b/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f36b/512.webp" alt="Chocolate" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: chocolate; color: white; font-size: 30px;">MERCADO BOM DOCE</H1>
+
+<span style="color: brown; width: max-content; height: max-content; font-size: 150% ">Quantidade de chocolates:</span>
+<input type="text" id="ipt_chocolates" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="calcular_compra()" style="width: max-content; height: max-content; font-size: 250%;">Compra</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function calcular_compra(){
+
+let chocolates = Number(ipt_chocolates.value)
+let valor = chocolates * 3
+
+if (chocolates > 12){
+    valor = chocolates * 2.50
+}
+
+div_exibir.innerHTML = `O valor da sua compra foi de R$${valor}`
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

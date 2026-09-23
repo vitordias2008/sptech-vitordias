@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REFRIGERANTE</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f964/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f964/512.webp" alt="Refrigerante" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: red; color: white; font-size: 30px;">CONTROLE DE REFRIGERANTE</H1>
+
+<span style="color: red; width: max-content; height: max-content; font-size: 150% ">Quantas latinhas você toma por dia?</span>
+<input type="text" id="ipt_latinhas" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="calcular_refrigerante()" style="width: max-content; height: max-content; font-size: 250%;">Quantos refris?</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function calcular_refrigerante(){
+
+let latinhas_dia = Number(ipt_latinhas.value)
+let latinhas_ano = latinhas_dia * 365
+
+if (latinhas_ano >= 500){
+    div_exibir.innerHTML = `Você consome ${latinhas_ano} latinhas por ano <br> Cuidado com a diabetes!`
+} else{
+    div_exibir.innerHTML = `Você consome ${latinhas_ano} latinhas por ano`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

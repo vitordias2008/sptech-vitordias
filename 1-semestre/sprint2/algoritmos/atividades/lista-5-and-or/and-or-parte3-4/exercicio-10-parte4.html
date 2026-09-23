@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Matrícula em Curso Avançado</h1>
+
+    <span>Concluiu o curso básico?</span>
+    <select id="select_curso">
+      <option disabled selected>Selecione:</option>
+      <option value="sim">Sim</option>
+      <option value="nao">Não</option>
+    </select>
+    <br />
+
+    <span>Média no curso básico:</span>
+    <input type="text" id="ipt_media" /> <br />
+
+    <span>Nota no teste de nivelamento:</span>
+    <input type="text" id="ipt_teste" /> <br />
+
+    <span>A documentação está completa?</span>
+    <select id="select_documentacao">
+      <option disabled selected>Selecione:</option>
+      <option value="sim">Sim</option>
+      <option value="nao">Não</option>
+    </select>
+    <br /><br />
+
+    <button onclick="verificar()">Verificar matrícula</button>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let curso = select_curso.value;
+    let media = Number(ipt_media.value);
+    let teste = Number(ipt_teste.value);
+    let documentacao = select_documentacao.value;
+
+    if (
+      ((curso == "sim" && media >= 7) || teste >= 8) &&
+      documentacao == "sim"
+    ) {
+      alert('Matrícula liberada para o curso avançado');
+    } else {
+      alert('Matrícula não liberada');
+    }
+  }
+</script>

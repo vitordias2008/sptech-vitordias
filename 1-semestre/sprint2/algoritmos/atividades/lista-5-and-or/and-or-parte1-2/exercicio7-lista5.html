@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 7 - Lista 5</title>
+</head>
+<body>
+
+    <h1>Análise de Parcelamento de Compra</h1>
+
+    <label>Modo de pagamento:</label>
+    <br>
+
+    <select id="sel_pagamento">
+        <option value="">Selecione</option>
+        <option value="dinheiro">Dinheiro</option>
+        <option value="debito">Cartão de débito</option>
+        <option value="credito">Cartão de crédito</option>
+        <option value="boleto">Boleto</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="analisarCompra()">Analisar compra</button>
+
+    <script>
+
+        function analisarCompra() {
+
+            let pagamento = sel_pagamento.value;
+
+            if (pagamento == "dinheiro" || pagamento == "debito") {
+
+                alert("Você terá que pagar a vista");
+
+            } else if (pagamento == "credito" || pagamento == "boleto") {
+
+                alert("Pagamento poderá ser parcelado");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

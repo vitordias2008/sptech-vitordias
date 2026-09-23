@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 1 - Lista 5</title>
+</head>
+<body>
+
+    <h1>Conforto Térmico</h1>
+
+    <label>Temperatura atual:</label>
+    <br>
+    <input type="number" id="ipt_temperatura">
+
+    <br><br>
+
+    <button onclick="verSituacao()">Ver situação</button>
+
+    <script>
+
+        function verSituacao() {
+
+            let temperatura = Number(ipt_temperatura.value);
+
+            if (temperatura >= 21 && temperatura <= 24) {
+
+                alert("Temperatura confortável :D");
+
+            } else {
+
+                alert("Temperatura DESCONFORTÁVEL :C");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
