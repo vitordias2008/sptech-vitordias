@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Pré-Avaliativa</h1> <br>
+
+    <label for="select_combustivel">Combustivel Vendido:</label>
+        <select name="Combustivel" id="select_combustivel">
+            <option selected disabled value ="disabled">Selecione o tipo de combustivel</option>
+            <option value="gasolina">Gasolina</option>
+            <option value="etanol">Etanol</option>
+            <option value="diesel">Diesel</option>
+        </select> <br>
+
+    <label for="ipt_litros">Quantidade vendida: (em litros)</label>
+        <input type="text" id="ipt_litros"> <br>
+
+    <label for="select_hora">Horario vendido: (Formato 24h)</label>
+        <select name="" id="select_hora">
+            <option value="0">00:00</option>
+            <option value="1">01:00</option>
+            <option value="2">02:00</option>
+            <option value="3">03:00</option>
+            <option value="4">04:00</option>
+            <option value="5">05:00</option>
+            <option value="6">06:00</option>
+            <option value="7">07:00</option>
+            <option value="8">08:00</option>
+            <option value="9">09:00</option>
+            <option value="10">10:00</option>
+            <option value="11">11:00</option>
+            <option value="12">12:00</option>
+            <option value="13">13:00</option>
+            <option value="14">14:00</option>
+            <option value="15">15:00</option>
+            <option value="16">16:00</option>
+            <option value="17">17:00</option>
+            <option value="18">18:00</option>
+            <option value="19">19:00</option>
+            <option value="20">20:00</option>
+            <option value="21">21:00</option>
+            <option value="22">22:00</option>
+            <option value="23">23:00</option>
+            
+        </select>
+
+        <br><button onclick="vender()">Vender</button>
+        <br><button onclick="encerrar()">Encerrar o Dia</button>
+            
+        <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+
+
+// variaveis globais
+let gasolina = 6.49
+let etanol = 4.44
+let diesel = 4.39
+
+let vendas = 0
+
+let totalVendas = 0
+let totalDescontos = 0
+
+let quantidadeTotal = 0
+let quantidadeGasolina = 0
+let quantidadeEtanol = 0
+let quantidadeDiesel = 0
+let porcentagemGasolina = 0
+let porcentagemEtanol = 0
+let porcentagemDiesel = 0
+
+// função parte 1
+
+function vender() {
+    let preco = 0
+    let desconto = 0
+    let combustivel = select_combustivel.value
+    let quantidade = Number(ipt_litros.value)
+    let horario = Number(select_hora.value)
+
+
+// calculo do preço
+
+    if (combustivel == 'gasolina') {
+            preco = quantidade * gasolina
+    } else if (combustivel == 'etanol') {
+            preco = quantidade * etanol
+    } else {
+            preco = quantidade * diesel
+    }
+
+// calculo do desconto
+
+    if (quantidade >= 20 && ( horario > 21 || horario < 6 )){
+        if (combustivel == 'gasolina') {
+            desconto = preco * 0.0505
+    } else if (combustivel == 'etanol') {
+            desconto = preco * 0.048 
+    } else {
+            desconto = preco * 0.0439
+    } ''
+    } 
+
+// soma do valor ao total
+    totalVendas = totalVendas + preco
+
+// soma do desconto ao total
+    totalDescontos = totalDescontos + desconto
+
+// contador de vendas
+        vendas = vendas + 1
+
+// parte 2 - contar os litros de cada combustivel
+
+ if (combustivel == 'gasolina') {
+            quantidadeTotal = quantidadeTotal + quantidade
+            quantidadeGasolina = quantidadeGasolina + quantidade
+    } else if (combustivel == 'etanol') {
+            quantidadeTotal = quantidadeTotal + quantidade
+            quantidadeEtanol = quantidadeEtanol + quantidade
+    } else {
+            quantidadeTotal = quantidadeTotal + quantidade
+            quantidadeDiesel = quantidadeDiesel + quantidade
+    }
+
+// parte 2 - calcular a porcentagem 
+
+    porcentagemGasolina = quantidadeGasolina /  quantidadeTotal * 100
+    porcentagemEtanol = quantidadeEtanol /  quantidadeTotal * 100
+    porcentagemDiesel = quantidadeDiesel /  quantidadeTotal * 100
+
+// exibição da msg
+        div_exibir.innerHTML += `
+        - Venda ${vendas}ª <br>
+        – Valor Recebido = R$ ${preco.toFixed(2)} <br>
+        – Desconto Concedido = R$ ${desconto.toFixed(2)} <br>
+        – Acumulado dos Recebimentos= R$ ${totalVendas.toFixed(2)} <br>
+        - Acumulado dos Descontos = R$ ${totalDescontos.toFixed(2)} <br>
+        ==================================================================== <br>
+        `
+    }
+
+// função parte 2
+function encerrar() {
+// limpar as mensagens
+    div_exibir.innerHTML = ``
+
+// limpar o contador  
+    vendas = 0
+
+
+
+
+
+// exibir mensagem
+    div_exibir.innerHTML = `
+        <b>Resumo do Faturamento<b> <br>
+        Valor Total Recebido = R$ ${totalVendas.toFixed(2)} <br>
+        Valor Total dos Descontos = R$ ${totalDescontos.toFixed(2)} <br>
+
+        Quantidade de Gasolina Vendida = ${quantidadeGasolina.toFixed(2)} litros == ${porcentagemGasolina.toFixed(2)} % <br>
+        Quantidade de Etanol Vendida = ${quantidadeEtanol.toFixed(2)} litros == ${porcentagemEtanol.toFixed(2)} % <br>
+        Quantidade de Diesel Vendida = ${quantidadeDiesel.toFixed(2)}  litros == ${porcentagemDiesel.toFixed(2)} % <br>
+        ====================================================================================================================</b><br>
+    `
+}
+
+
+</script>

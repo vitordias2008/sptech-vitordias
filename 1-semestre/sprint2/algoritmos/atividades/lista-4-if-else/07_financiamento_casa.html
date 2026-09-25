@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINANCIAMENTO</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3e0/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3e0/512.webp" alt="Casa" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: green; color: white; font-size: 30px;">FINANCIAMENTO DA CASA PRÓPRIA</H1>
+
+<span style="color: green; width: max-content; height: max-content; font-size: 150% ">Valor da renda familiar:</span>
+<input type="text" id="ipt_renda" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: green; width: max-content; height: max-content; font-size: 150% ">Valor da prestação:</span>
+<input type="text" id="ipt_prestacao" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="verificar_financiamento()" style="width: max-content; height: max-content; font-size: 250%;">Verificar financiamento</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function verificar_financiamento(){
+
+let renda = Number(ipt_renda.value)
+let prestacao = Number(ipt_prestacao.value)
+let porcentagem = prestacao / renda * 100
+
+if (porcentagem > 30){
+    div_exibir.innerHTML = `A prestação corresponde a ${porcentagem}% da renda familiar <br> <b style="color: red;">Será necessário complementar a renda familiar</b>`
+} else{
+    div_exibir.innerHTML = `A prestação corresponde a ${porcentagem}% da renda familiar`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

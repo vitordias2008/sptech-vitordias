@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        InfoConnect | Simule seu investimento
+    </title>
+
+</head>
+
+<body style="font-family:Arial,sans-serif;margin:20px;color:#222;">
+
+    <div class="pagina" style="max-width:900px;margin:auto;">
+        <div class="marca" style="color:green;font-weight:bold;">
+            InfoConnect
+        </div>
+        <h1>
+            Entenda o investimento.
+            <br>
+            <b style="color: green;">Veja o seu lucro   </b>
+        </h1>
+        <p class="introducao" style="color:#555;">
+            Observe aproximações e permanências diante do expositor para orientar avaliações da exposição. Aqui, compare
+            o custo da implementação com os números de um produto que você já vende.
+        </p>
+        <div class="modulo" style="border:1px solid #ccc;padding:15px;margin:20px 0;">
+            <span class="etapa" style="color:green;font-weight:bold;">
+                01 · IMPLEMENTAÇÃO
+            </span>
+            <h2>
+                Quanto custa monitorar seus corredores?
+            </h2>
+            <p class="apoio" style="font-size:13px;color:#555;">
+                Informe a quantidade de corredores e o comprimento de cada um. A estimativa considera 1 sensor a cada 4
+                metros, arredondando para cima em cada corredor.
+            </p>
+            <div class="campos" style="margin:10px 0;">
+                <div class="campo" style="margin-bottom:10px;">
+                    <label for="ipt_corredores" style="display:block;margin-bottom:4px;">
+                        Quantos corredores deseja monitorar?
+                    </label>
+                    <input type="number" id="ipt_corredores" min="1" step="1" placeholder="Ex.: 5" oninput="limpar()" style="padding:7px;margin-bottom:5px;">
+                </div>
+                <div class="campo" style="margin-bottom:10px;">
+                    <label for="ipt_metros" style="display:block;margin-bottom:4px;">
+                        Comprimento de cada corredor (metros)
+                    </label>
+                    <input type="number" id="ipt_metros" min="0" step="0.01" placeholder="Ex.: 10" oninput="limpar()" style="padding:7px;margin-bottom:5px;">
+                </div>
+            </div>
+            <p class="apoio" style="font-size:13px;color:#555;">
+                Use corredores do mesmo comprimento. Se forem diferentes, calcule cada grupo separadamente; a média dos
+                comprimentos pode subestimar a quantidade de sensores.
+            </p>
+            <div class="proposta" style="border:1px solid #ccc;padding:10px;margin:10px 0;">
+                <h3>
+                    Valores adotados na simulação
+                </h3>
+                <div class="metricas" style="margin:10px 0;">
+                    <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">
+                        Conjunto por sensor
+                        <b>
+                            R$ 150,00
+                        </b>
+                    </div>
+                    <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">
+                        Instalação por conjunto
+                        <b>
+                            R$ 50,00
+                        </b>
+                    </div>
+                </div>
+                <span class="apoio" style="font-size:13px;color:#555;">
+                    Conjunto estimado: HC-SR04, Arduino UNO R3, protoboard, jumpers, cabo USB e suporte. Instalação:
+                    montagem, posicionamento e configuração básica. São hipóteses de custo, não cotações ou preços
+                    definidos na documentação. Considera computador disponível; não inclui desenvolvimento de software,
+                    infraestrutura adicional ou mensalidades.
+                </span>
+            </div>
+            <button onclick="calcularImplementacao()" style="padding:8px 12px;background:green;color:white;border:0;">
+                Calcular implementação
+            </button>
+            <div id="div_implementacao" class="resultado" style="margin-top:10px;" aria-live="polite">
+            </div>
+        </div>
+        <div class="modulo" style="border:1px solid #ccc;padding:15px;margin:20px 0;">
+            <span class="etapa" style="color:green;font-weight:bold;">
+                02 · RETORNO DO INVESTIMENTO
+            </span>
+            <h2>
+                O investimento compensa neste cenário?
+            </h2>
+            <p class="apoio" style="font-size:13px;color:#555;">
+                ROI é o retorno sobre o investimento. Escolha o período para ver quanto do custo inicial seria
+                recuperado e qual seria o saldo neste cenário.
+            </p>
+            <div class="campos" style="margin:10px 0;">
+                <div class="campo" style="margin-bottom:10px;">
+                    <label for="ipt_meses_roi" style="display:block;margin-bottom:4px;">
+                        Período da simulação (meses)
+                    </label>
+                    <input type="number" id="ipt_meses_roi" min="1" step="1" value="12"
+                        oninput="div_roi.innerHTML = ''" style="padding:7px;margin-bottom:5px;">
+                </div>
+            </div>
+            <p class="apoio" style="font-size:13px;color:#555;">
+                Base do exemplo: ganho mensal hipotético de 10% do investimento inicial, constante e sem juros
+                compostos. É uma premissa do exercício, sem comprovação pelo projeto. Este módulo não usa os dados do
+                produto.
+            </p>
+            <button onclick="calcularRoi()" style="padding:8px 12px;background:green;color:white;border:0;">
+                Calcular ROI
+            </button>
+            <div id="div_roi" class="resultado" style="margin-top:10px;" aria-live="polite">
+            </div>
+            <p class="apoio" style="font-size:13px;color:#555;">
+                ROI simplificado: compara o ganho hipotético acumulado com a implementação. Não desconta impostos,
+                taxas, mensalidades ou outras despesas; o retorno líquido pode ser menor ou negativo.
+            </p>
+        </div>
+        <div class="modulo modulo-secundario" style="border:1px solid #ccc;padding:15px;margin:20px 0;">
+            <span class="etapa" style="color:green;font-weight:bold;">
+                03 · EXEMPLO POR PRODUTO
+            </span>
+            <h2>
+                Use um produto que você já vende
+            </h2>
+            <p class="apoio" style="font-size:13px;color:#555;">
+                Consulte o cadastro do produto, o custo de compra e o relatório de vendas do mês. Use a mesma unidade
+                nos três campos: uma unidade, caixa ou pacote.
+            </p>
+            <div class="campos" style="margin:10px 0;">
+                <div class="campo" style="margin-bottom:10px;">
+                    <label for="ipt_preco" style="display:block;margin-bottom:4px;">
+                        Por quanto você vende? (R$)
+                    </label>
+                    <input type="number" id="ipt_preco" min="0" step="0.01" placeholder="Preço por unidade"
+                        oninput="div_lucro.innerHTML = ''" style="padding:7px;margin-bottom:5px;">
+                </div>
+                <div class="campo" style="margin-bottom:10px;">
+                    <label for="ipt_custo" style="display:block;margin-bottom:4px;">
+                        Quanto paga pelo produto? (R$)
+                    </label>
+                    <input type="number" id="ipt_custo" min="0" step="0.01" placeholder="Custo por unidade"
+                        oninput="div_lucro.innerHTML = ''" style="padding:7px;margin-bottom:5px;">
+                </div>
+                <div class="campo" style="margin-bottom:10px;">
+                    <label for="ipt_quantidade" style="display:block;margin-bottom:4px;">
+                        Quantas unidades vendeu no mês?
+                    </label>
+                    <input type="number" id="ipt_quantidade" min="0" step="1" placeholder="Quantidade do relatório"
+                        oninput="div_lucro.innerHTML = ''" style="padding:7px;margin-bottom:5px;">
+                </div>
+            </div>
+            <button onclick="calcularLucro()" style="padding:8px 12px;background:green;color:white;border:0;">
+                Ver lucro e comparar investimento
+            </button>
+            <div id="div_lucro" class="resultado" style="margin-top:10px;" aria-live="polite">
+            </div>
+            <p class="apoio" style="font-size:13px;color:#555;">
+                Aqui, “lucro bruto simplificado” significa preço de venda menos custo de compra. Ainda não foram
+                descontados impostos sobre vendas, taxas e despesas da operação.
+            </p>
+        </div>
+        <p class="rodape" style="font-size:13px;color:#555;">
+            O cenário de vendas é ilustrativo e usa dados informados pelo cliente. O InfoConnect não mede compras nem
+            garante aumento das vendas. A regra de 1 sensor a cada 4 m é uma premissa de orçamento, não garantia de
+            cobertura contínua do corredor. A documentação prevê um protótipo de uma zona diante de um expositor; a
+            ampliação e a infraestrutura necessária dependem de avaliação técnica e comercial.
+        </p>
+    </div>
+</body>
+
+    <script>
+        // variavel global
+        let investimento = 0;
+
+        // função para limpar a pagina quando o usuario inserir novas informações
+        function limpar() {
+            investimento = 0;
+            div_roi.innerHTML = '';
+            div_implementacao.innerHTML = '';
+            div_lucro.innerHTML = '';
+        }
+
+
+        function calcularImplementacao() {
+
+        // declara o investimento para 0, para resetar a conta
+            investimento = 0;
+
+        // declara as variaveis e os preços fixos
+            let corredores = Number(ipt_corredores.value);
+            let metros = Number(ipt_metros.value);
+            let precoSensor = 150;
+            let instalacaoSensor = 50;
+
+        /* SE alguns valor tiver sem nada, ele não roda o codigo e vai para o else final = "else {
+                div_implementacao.innerHTML = `<p class="erro" style="color:red;">Informe uma quantidade inteira de corredores maior que zero e um comprimento maior que zero em metros.</p>`;}}""
+        */
+            if (ipt_corredores.value != '' && ipt_metros.value != '' && corredores > 0 && corredores % 1 == 0 && metros > 0) {
+
+            // SE os valores estiverem validos, roda o codigo e calcula a quantidade de sensores por corredor e depois multiplica pela quantidade de corredor
+                
+                let sensoresPorCorredor = metros / 4; // calculo de sensor
+
+                if (sensoresPorCorredor % 1 > 0) {
+                    sensoresPorCorredor = sensoresPorCorredor - sensoresPorCorredor % 1 + 1;
+                } // arruma numeros impares/quebraos
+
+                let totalSensores = corredores * sensoresPorCorredor;
+                let equipamentos = totalSensores * precoSensor;
+                let instalacao = totalSensores * instalacaoSensor;
+                investimento = equipamentos + instalacao;
+
+
+                div_implementacao.innerHTML = `<div class="destaque" style="border:1px solid #ccc;padding:10px;margin-top:10px;">Investimento inicial estimado
+                        <span class="valor" style="display:block;font-size:24px;font-weight:bold;">R$ ${investimento.toFixed(2)}</span>
+                        ${corredores} corredor(es) de ${metros} m · ${totalSensores} sensores no total.</div>
+                        <div class="metricas" style="margin:10px 0;">
+                            <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">Sensores por corredor<b>${sensoresPorCorredor}</b></div>
+                            <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">Equipamentos<b>R$ ${equipamentos.toFixed(2)}</b></div>
+                            <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">Instalação<b>R$ ${instalacao.toFixed(2)}</b></div>
+                        </div>
+                        <p class="apoio" style="font-size:13px;color:#555;">${metros} m ÷ 4, arredondado para cima = ${sensoresPorCorredor} sensor(es) por corredor.<br>
+                        ${totalSensores} conjuntos × R$ ${precoSensor.toFixed(2)} + ${totalSensores} instalações × R$ ${instalacaoSensor.toFixed(2)}.</p>`;
+            } else {
+                div_implementacao.innerHTML = `<p class="erro" style="color:red;">Informe uma quantidade inteira de corredores maior que zero e um comprimento maior que zero em metros.</p>`;
+            }
+        }
+
+        function calcularRoi() {
+            calcularImplementacao();
+            let meses = Number(ipt_meses_roi.value);
+            let taxaMensal = 10;
+
+            if (investimento > 0) {
+                if (ipt_meses_roi.value != '' && meses > 0 && meses % 1 == 0) {
+                    let ganhoMensal = investimento * taxaMensal / 100;
+                    let ganhoTotal = ganhoMensal * meses;
+                    let saldo = ganhoTotal - investimento;
+                    let roi = saldo / investimento * 100;
+                    let recuperacao = ganhoTotal / investimento * 100;
+                    let barra = recuperacao;
+                    if (barra > 100) {
+                        barra = 100;
+                    }
+                    let classe = 'roi-positivo';
+                    let titulo = 'Investimento coberto no cenário';
+                    let mensagem = `Após recuperar R$ ${investimento.toFixed(2)}, sobrariam R$ ${saldo.toFixed(2)} antes das demais despesas.`;
+                    if (saldo < 0) {
+                        classe = 'roi-negativo';
+                        titulo = 'Ainda falta recuperar parte do investimento';
+                        mensagem = `Faltariam R$ ${(0 - saldo).toFixed(2)} para cobrir a implementação. Isso não significa queda nas vendas: o ganho acumulado ainda seria menor que o custo inicial.`;
+                    } else if (saldo == 0) {
+                        classe = 'roi-equilibrio';
+                        titulo = 'Ponto de equilíbrio do cenário';
+                        mensagem = `O ganho acumulado cobriria exatamente a implementação. Ainda não haveria excedente.`;
+                    }
+                    div_roi.innerHTML = `<div class="destaque ${classe}" style="border:1px solid #ccc;padding:10px;margin-top:10px;">
+                            <span>ROI ilustrativo em ${meses} meses</span>
+                            <span class="valor" style="display:block;font-size:24px;font-weight:bold;">${roi.toFixed(2)}%</span>
+                            <h3>${titulo}</h3>${mensagem}</div>
+                            <div class="metricas" style="margin:10px 0;">
+                                <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">Investimento inicial<b>R$ ${investimento.toFixed(2)}</b></div>
+                                <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">Ganho hipotético acumulado<b>R$ ${ganhoTotal.toFixed(2)}</b></div>
+                                <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">Saldo depois da implementação<b>R$ ${saldo.toFixed(2)}</b></div>
+                            </div>
+                            <h3>Recuperação do investimento inicial</h3>
+                            <div class="barra-roi" style="height:10px;background:#ddd;"><div style="width:${barra}%;height:100%;background:green;"></div></div>
+                            <p>O ganho acumulado equivale a <b>${recuperacao.toFixed(2)}%</b> do custo inicial. Recuperar 100% do custo significa <b>ROI de 0%</b>.</p>
+                            <div class="proposta" style="border:1px solid #ccc;padding:10px;margin:10px 0;">
+                                <h3>Entenda a conta</h3>
+                                Ganho mensal hipotético: R$ ${investimento.toFixed(2)} × ${taxaMensal}% = <b>R$ ${ganhoMensal.toFixed(2)}</b>.<br>
+                                Ganho em ${meses} meses: R$ ${ganhoMensal.toFixed(2)} × ${meses} = <b>R$ ${ganhoTotal.toFixed(2)}</b>.<br>
+                                ROI: (R$ ${ganhoTotal.toFixed(2)} − R$ ${investimento.toFixed(2)}) ÷ R$ ${investimento.toFixed(2)} × 100 = <b>${roi.toFixed(2)}%</b>.
+                            </div>
+                            <p class="apoio" style="font-size:13px;color:#555;">Nesta hipótese, o custo inicial se iguala ao ganho acumulado em 10 meses. Esse prazo é fixado pela taxa escolhida, não demonstra o desempenho real do InfoConnect. Impostos, taxas, mensalidades e outras despesas não estão incluídos.</p>`;
+                } else {
+                    div_roi.innerHTML = `<p class="erro" style="color:red;">Informe um período inteiro maior que zero.</p>`;
+                }
+            } else {
+                div_roi.innerHTML = `<p class="erro" style="color:red;">Preencha a quantidade e o comprimento dos corredores no módulo de implementação.</p>`;
+            }
+        }
+
+        function calcularLucro() {
+            calcularImplementacao();
+            let preco = Number(ipt_preco.value);
+            let custo = Number(ipt_custo.value);
+            let quantidade = Number(ipt_quantidade.value);
+
+            if (ipt_preco.value != '' && ipt_custo.value != '' && ipt_quantidade.value != '' && preco > 0 && custo >= 0 && quantidade >= 0 && quantidade % 1 == 0) {
+                let lucroUnidade = preco - custo;
+                let lucroAtual = lucroUnidade * quantidade;
+                div_lucro.innerHTML = `<div class="metricas" style="margin:10px 0;">
+                        <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">Lucro bruto simplificado por unidade<b>R$ ${lucroUnidade.toFixed(2)}</b></div>
+                        <div class="metrica" style="border:1px solid #ccc;padding:10px;margin:5px 0;">Lucro bruto simplificado no mês informado<b>R$ ${lucroAtual.toFixed(2)}</b></div>
+                        </div>`;
+
+                if (lucroUnidade > 0) {
+                    let unidadesExtras = 30;
+                    let ganhoExtra = lucroUnidade * unidadesExtras;
+                    let lucroCenario = lucroAtual + ganhoExtra;
+                    let ganhoAnual = ganhoExtra * 12;
+                    div_lucro.innerHTML = `<div class="lucro-principal" style="border:1px solid #ccc;padding:10px;margin:10px 0;">
+                            <h3>Uma venda a mais por dia. Veja o acumulado em 12 meses.</h3>
+                            <span class="valor" style="display:block;font-size:24px;font-weight:bold;">+ R$ ${ganhoAnual.toFixed(2)}</span>
+                            de lucro bruto adicional no cenário de 12 meses.<br>
+                            <span class="mensal" style="font-weight:bold;">+ R$ ${ganhoExtra.toFixed(2)} a cada 30 dias</span>
+                            <p class="apoio" style="font-size:13px;color:#555;">Hipótese: 1 unidade extra por dia, em 12 meses de 30 dias, com o mesmo preço e custo. Antes da implementação, impostos e demais despesas. Não é uma promessa de resultado.</p>
+                            </div>` + div_lucro.innerHTML;
+                    div_lucro.innerHTML += `<p>Com as 30 vendas extras, o lucro bruto simplificado mensal passaria de <b>R$ ${lucroAtual.toFixed(2)}</b> para <b>R$ ${lucroCenario.toFixed(2)}</b>.</p>`;
+                    if (investimento > 0) {
+                        let unidadesNecessarias = investimento / lucroUnidade;
+                        if (unidadesNecessarias % 1 > 0) {
+                            unidadesNecessarias = unidadesNecessarias - unidadesNecessarias % 1 + 1;
+                        }
+                        div_lucro.innerHTML += `<h3>Colocando o investimento em perspectiva</h3>
+                                <p><b>${unidadesNecessarias} unidades extras</b> desse produto gerariam um lucro bruto simplificado equivalente aos <b>R$ ${investimento.toFixed(2)}</b> da implementação.</p>
+                                <p class="apoio" style="font-size:13px;color:#555;">Essa equivalência não é prazo de retorno nem lucro líquido: impostos, taxas, despesas adicionais e possíveis mensalidades aumentam o valor necessário.</p>`;
+                    } else {
+                        div_lucro.innerHTML += `<p class="apoio" style="font-size:13px;color:#555;">Complete o módulo de implementação para comparar o investimento com o lucro por unidade.</p>`;
+                    }
+                } else {
+                    div_lucro.innerHTML += `<p class="erro" style="color:red;">O preço de venda não supera o custo de compra. Vender mais nessas condições não gera lucro bruto adicional positivo.</p>`;
+                }
+            } else {
+                div_lucro.innerHTML = `<p class="erro" style="color:red;">Informe preço de venda positivo, custo não negativo e quantidade mensal inteira igual ou maior que zero. Use valores da mesma unidade do produto.</p>`;
+            }
+        }
+    </script>
+
+</html>

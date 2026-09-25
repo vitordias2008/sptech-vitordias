@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body style="text-align: center">
+    <h1>Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h1>
+
+    <span>Qual o tamanho da tela do celular encontrado: (em polegadas)</span>
+    <input type="text" id="ipt_tamanho">
+    <br>
+    <span>Qual a cor do celular encontrado:</span>
+
+    <select id="select_cor">
+      <option disabled selected>Selecione a cor</option>
+      <option value="preto">Preto</option>
+      <option value="prata">Prata</option>
+      <option value="azul">Azul</option>
+      <option value="vermelho">Vermelho</option>
+    </select><br><br>
+    <button onclick="avaliar() "style="height: 100px; width: 250px; font-size: 25px">Será que ele gosta?</button> <br><br>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function avaliar() {
+    let tamanho = Number(ipt_tamanho.value);
+    let cor = select_cor.value;
+
+    if (tamanho > 6.5 && (cor == "prata" || cor == "preto")) {
+      div_exibir.innerHTML = `<img src="https://media.tenor.com/f32_gMJGF_MAAAAe/doakes-meme-doakes.png" alt="feliz">`;
+    } else {
+      div_exibir.innerHTML = `<img src="https://static.wikia.nocookie.net/villains-versos-galeria/images/8/89/Sergeant_James_Doakes.webp/revision/latest?cb=20231015183306&path-prefix=pt-br" alt="triste">`;
+    }
+  }
+</script>
+

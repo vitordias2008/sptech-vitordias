@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTA DE LUZ</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4a1/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4a1/512.webp" alt="Lâmpada" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: gold; color: black; font-size: 30px;">CONTA DE LUZ</H1>
+
+<span style="color: goldenrod; width: max-content; height: max-content; font-size: 150% ">Quantidade de KWh consumida:</span>
+<input type="text" id="ipt_kwh" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="calcular_conta()" style="width: max-content; height: max-content; font-size: 250%;">Calcular conta de luz</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function calcular_conta(){
+
+let kwh = Number(ipt_kwh.value)
+let valor_conta = kwh * 0.85
+
+if (kwh < 100){
+    valor_conta = valor_conta * 0.90
+}
+
+alert(`Valor da conta: R$${valor_conta}`)
+div_exibir.innerHTML = `Valor da conta: R$${valor_conta}`
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

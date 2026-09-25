@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>9. Super Jogo da Palavra Secreta</h1>
+    <span>Insira uma letra:</span>
+    <input type="text" id="ipt_letra" />
+    <button onclick="verificar()">Verificar Letra</button>
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let palavra = "morango";
+  let restantes = palavra.toLowerCase();
+
+  div_exibir.innerHTML = `Palavra secreta definida! Descubra todos os ${palavra.length} caracteres!`;
+
+  function verificar() {
+    let letra = ipt_letra.value.toLowerCase();
+
+    if (restantes.length > 0) {
+      if (letra.length == 1) {
+        if (restantes.includes(letra)) {
+          restantes = restantes.replace(letra, "");
+          div_exibir.innerHTML = `O caractere ${letra} aparece na palavra secreta! Faltam ${restantes.length} caracteres`;
+        } else {
+          div_exibir.innerHTML = `O caractere ${letra} NÃO aparece na palavra secreta! Faltam ${restantes.length} caracteres`;
+        }
+
+        if (restantes.length == 0) {
+          div_exibir.innerHTML += `<br>Parabéns, você descobriu todas as letras da palavra secreta ${palavra}!`;
+        }
+      } else {
+        div_exibir.innerHTML = `Falta apenas 1 caractere!`;
+      }
+    }
+  }
+</script>

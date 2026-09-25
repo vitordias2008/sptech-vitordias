@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STREAMING</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4fa/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4fa/512.webp" alt="Televisão" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: purple; color: white; font-size: 30px;">CONTROLE DE HORAS ASSISTINDO STREAMING</H1>
+
+<span style="color: purple; width: max-content; height: max-content; font-size: 150% ">Última série SITCOM assistida:</span>
+<input type="text" id="ipt_serie" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: purple; width: max-content; height: max-content; font-size: 150% ">Quantidade de episódios assistidos:</span>
+<input type="text" id="ipt_episodios" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="verificar_nivel()" style="width: max-content; height: max-content; font-size: 250%;">Verificar nível</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function verificar_nivel(){
+
+let serie = ipt_serie.value
+let episodios = Number(ipt_episodios.value)
+let horas = episodios * 22 / 60
+
+if (horas > 30){
+    div_exibir.innerHTML = `Vejo que você gosta da série ${serie} <br> Uau, você realmente gosta dessa série!`
+} else{
+    div_exibir.innerHTML = `Vejo que você gosta da série ${serie}`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

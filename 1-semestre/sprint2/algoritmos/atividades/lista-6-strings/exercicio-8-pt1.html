@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>8. Jogo da Palavra Secreta</h1>
+    <span>Insira letras:</span>
+    <input type="text" id="ipt_letra" />
+    <button onclick="verificar()">Verificar Letras</button>
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let palavra = "morango".toLowercase();
+
+  function verificar() {
+    let letra = ipt_letra.value.toLowerCase();
+
+    if (palavra.includes(letra)) {
+      div_exibir.innerHTML = +`A letra ${letra} aparece na palavra secreta!`;
+    } else {
+      div_exibir.innerHTML =
+        +`A letra ${letra} não aparece na palavra secreta!`;
+    }
+  }
+</script>

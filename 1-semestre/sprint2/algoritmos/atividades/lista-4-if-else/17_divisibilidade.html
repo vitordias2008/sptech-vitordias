@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIVISIBILIDADE</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/2797/512.webp">
+</head>
+<body style="text-align: center;">
+    <h1 style = "background-color: blue; color: white; font-size: 30px;">TESTE DE DIVISIBILIDADE</H1>
+
+<span style="color: blue; width: max-content; height: max-content; font-size: 150% ">Primeiro número:</span>
+<input type="text" id="ipt_numero1" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: blue; width: max-content; height: max-content; font-size: 150% ">Segundo número:</span>
+<input type="text" id="ipt_numero2" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="testar_divisibilidade()" style="width: max-content; height: max-content; font-size: 250%;">Testar</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function testar_divisibilidade(){
+
+let numero1 = Number(ipt_numero1.value)
+let numero2 = Number(ipt_numero2.value)
+
+// O símbolo % pega o resto de uma divisão
+if (numero1 % numero2 == 0){
+    div_exibir.innerHTML = `<img src="https://img.magnific.com/vetores-premium/emoticon-feminino-com-o-polegar-para-cima_1303870-63.jpg?semt=ais_hybrid&w=740&q=80" style="width: 200px; height: 200px;">`
+} else{
+    div_exibir.innerHTML = `<img src="https://thumbs.dreamstime.com/b/pessoa-3d-com-um-s%C3%ADmbolo-negativo-20673140.jpg" style="width: 200px; height: 200px;">`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

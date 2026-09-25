@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVADOR V2</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/2696_fe0f/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2696_fe0f/512.webp" alt="Peso" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: gray; color: white; font-size: 30px;">CONTROLE DE PESO NO ELEVADOR - V2</H1>
+
+<span style="color: gray; width: max-content; height: max-content; font-size: 150% ">Quantidade de homens:</span>
+<input type="text" id="ipt_homens" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<span style="color: gray; width: max-content; height: max-content; font-size: 150% ">Quantidade de mulheres:</span>
+<input type="text" id="ipt_mulheres" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="ligar_elevador()" style="width: max-content; height: max-content; font-size: 250%;">Ligar elevador</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function ligar_elevador(){
+
+let homens = Number(ipt_homens.value)
+let mulheres = Number(ipt_mulheres.value)
+let peso = homens * 90 + mulheres * 70
+
+if (peso <= 500){
+    div_exibir.innerHTML = `<span style="color: green;">Elevador vai se mover, pois está com ${peso}kg</span>`
+} else{
+    let perder = peso - 500
+    div_exibir.innerHTML = `<span style="color: red;">Alguém precisa descer. Precisa perder ${perder}kg para mover o elevador</span>`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

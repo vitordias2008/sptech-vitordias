@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Financiamento de Veículo</h1>
+
+    <span>Idade:</span>
+    <input type="text" id="ipt_idade" /> <br />
+
+    <span>Possui CNH válida?</span>
+    <select id="select_cnh">
+      <option disabled selected>Selecione:</option>
+      <option value="sim">Sim</option>
+      <option value="nao">Não</option>
+    </select>
+    <br />
+
+    <span>Renda mensal:</span>
+    <input type="text" id="ipt_renda" /> <br />
+
+    <span>Apresentou um fiador?</span>
+    <select id="select_fiador">
+      <option disabled selected>Selecione:</option>
+      <option value="sim">Sim</option>
+      <option value="nao">Não</option>
+    </select>
+    <br /><br />
+
+    <button onclick="analisar()">Analisar financiamento</button>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let idade = Number(ipt_idade.value);
+    let cnh = select_cnh.value;
+    let renda = Number(ipt_renda.value);
+    let fiador = select_fiador.value;
+
+    if (idade >= 21 && cnh == "sim" && (renda >= 2500 || fiador == "sim")) {
+      alert('Financiamento aprovado');
+    } else {
+      alert('Financiamento negado');
+    }
+  }
+</script>

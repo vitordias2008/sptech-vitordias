@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FESTA</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f389/512.webp">
+</head>
+<body style="text-align: center;">
+    <h1 style = "background-color: red; color: black; font-size: 30px;">PERMISSÃO PARA FESTA</H1>
+
+<span style="color: red; width: max-content; height: max-content; font-size: 150% ">Insira sua idade:</span>
+<input type="text" id="ipt_idade" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="validar_idade()" style="width: max-content; height: max-content; font-size: 250%;">Ir pra festa</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function validar_idade(){
+
+let idade = Number(ipt_idade.value)
+
+if (idade < 18){
+    alert('Pedir permissão pro responsável')
+}
+
+alert('#partiuFesta')
+div_exibir.innerHTML = `#partiuFesta`
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>5. Substituidor de Caracteres</h1>
+    <span>Insira uma senha:</span>
+    <input type="text" id="ipt_senha" oninput="analisar()">
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function analisar() {
+        let senha = ipt_senha.value
+
+        senha = senha.replaceAll('a', '@').replaceAll('A', '@')
+        senha = senha.replaceAll('e', '3').replaceAll('E', '3')
+
+        div_exibir.innerHTML = `${senha}`
+        
+    }
+</script>
+

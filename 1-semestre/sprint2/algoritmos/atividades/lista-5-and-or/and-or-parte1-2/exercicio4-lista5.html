@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 4 - Lista 5</title>
+</head>
+<body>
+
+    <h1>Juliane Joada e Suas Frutas Preferidas</h1>
+
+    <label>Nome da fruta:</label>
+    <br>
+    <input type="text" id="ipt_fruta">
+
+    <br><br>
+
+    <button onclick="vaiComer()">Vai comer?</button>
+
+    <script>
+
+        function vaiComer() {
+
+            let fruta = ipt_fruta.value;
+
+            if (fruta == "uva" || fruta == "abacaxi") {
+
+                alert("Sim, vai comer " + fruta);
+
+            } else {
+
+                alert("A fruta " + fruta + " ela não come");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

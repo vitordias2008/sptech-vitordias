@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAR OU ÍMPAR</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f522/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f522/512.webp" alt="Números" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: yellow; color: black; font-size: 30px;">PAR OU ÍMPAR</H1>
+
+<span style="color: black; width: max-content; height: max-content; font-size: 150% ">Insira um número:</span>
+<input type="text" id="ipt_numero" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="analisar_numero()" style="width: max-content; height: max-content; font-size: 250%;">Analisar</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function analisar_numero(){
+
+let numero = Number(ipt_numero.value)
+
+// O símbolo % pega o resto de uma divisão
+if (numero % 2 == 0){
+    div_exibir.innerHTML = `<span style="color: red; background-color: yellow;">Esse número é PAR</span>`
+} else{
+    div_exibir.innerHTML = `<b style="color: blue;">Esse número é impar</b>`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

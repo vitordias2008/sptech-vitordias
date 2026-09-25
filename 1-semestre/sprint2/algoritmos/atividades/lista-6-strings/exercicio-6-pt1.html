@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>6. Observador de Índices</h1>
+    <span>Insira uma frase:</span>
+    <input type="text" id="ipt_frase" oninput="analisar()"> <br>
+    <span>Qual posição deseja ver?</span>
+    <input type="text" id="ipt_posicao" oninput="analisar()">
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+
+
+
+    function analisar() {
+        let frase = ipt_frase.value
+        let posicao = Number(ipt_posicao.value)
+
+        div_exibir.innerHTML = `A primeira letra é: ${frase[0]}`
+        div_exibir.innerHTML += `<br>A letra da posição ${posicao}  é: ${frase[posicao]}`
+        div_exibir.innerHTML += `<br>A última letra é: ${frase[frase.length - 1]}`
+    }
+</script>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREQUÊNCIA</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/512.webp">
+</head>
+<body style="text-align: center;">
+    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/512.webp" alt="Livros" style="width: 200px; height: 200px;">
+    <h1 style = "background-color: blue; color: white; font-size: 30px;">ANÁLISE DE FREQUÊNCIA DO ALUNO</H1>
+
+<span style="color: blue; width: max-content; height: max-content; font-size: 150% ">Frequência do aluno:</span>
+<input type="text" id="ipt_frequencia" style="width: max-content; height: max-content; font-size: 150%"> <br> <br>
+<button onclick="analisar_frequencia()" style="width: max-content; height: max-content; font-size: 250%;">Analisar frequência</button>
+<br><br><br>
+<div id="div_exibir" style="font-size: 40px"></div>
+
+<script>
+
+function analisar_frequencia(){
+
+let frequencia = Number(ipt_frequencia.value)
+
+if (frequencia < 50){
+    div_exibir.innerHTML = `<img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f9f3/512.webp" style="width: 200px; height: 200px;">`
+} else{
+    div_exibir.innerHTML = `<img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f913/512.webp" style="width: 200px; height: 200px;">`
+}
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

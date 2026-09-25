@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1. Validações de Campos com Métodos de String (texto)</h1>
+    <span>Insira uma frase:</span>
+    <input type="text" id="ipt_frase" oninput="frase()">
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function frase() {
+        let frase = ipt_frase.value
+
+        div_exibir.innerHTML = `Tamanho da frase:${frase.length}`
+    
+
+    if (frase.length < 10) {
+        div_exibir.innerHTML += `<br><b style = "color: red">Frase Curta!</b>`
+    } else {
+        div_exibir.innerHTML += `<br><b style = "color: blue">Frase Longa!</b>`
+    }
+
+}
+</script>
