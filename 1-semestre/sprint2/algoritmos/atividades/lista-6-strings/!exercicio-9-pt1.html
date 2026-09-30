@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>exercicio 9</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      font-size: 30px;
+      text-align: left;
+    }
+
+    span {
+      font-size: 20px;
+    }
+
+    input,
+    select {
+      width: 200px;
+      height: 30px;
+      font-size: 18px;
+      margin: 10px;
+    }
+
+    button {
+      width: 250px;
+      height: 50px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #div_exibir {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    .erro {
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body class="body">
+  <h1 class="h1">9. Super Jogo da Palavra Secreta</h1>
+
+  <div id="div_inicio"></div><br>
+
+  <span>Digite uma letra:</span>
+  <input type="text" id="ipt_letra"><br>
+
+  <button class="button" onclick="verificar()">Verificar Letra</button>
+
+  <div class="button" id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+  let palavra = "morango"
+  let restantes = palavra.toLowerCase()
+
+  div_inicio.innerHTML = `Palavra secreta definida! Descubra todos os ${palavra.length} caracteres!`
+
+  function verificar() {
+    let letra = ipt_letra.value.toLowerCase()
+
+    if (restantes.length > 0) {
+      if (letra.length == 1) {
+        if (restantes.includes(letra)) {
+          restantes = restantes.replace(letra, "")
+          div_exibir.innerHTML += `<br>O caractere ${letra} aparece na palavra secreta! Faltam ${restantes.length} caracteres`
+        } else {
+          div_exibir.innerHTML += `<br>O caractere ${letra} NÃO aparece na palavra secreta! Faltam ${restantes.length} caracteres`
+        }
+
+        if (restantes.length == 0) {
+          div_exibir.innerHTML += `<br>Parabéns, você descobriu todas as letras da palavra secreta ${palavra}!`
+        }
+
+        ipt_letra.value = ""
+        ipt_letra.focus()
+
+      } else {
+
+        div_exibir.innerHTML += `<br><span class="erro">Digite apenas 1 caractere!</span>`
+
+      }
+    }
+  }
+</script>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 2</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">2. Diário de Viagens</h1>
+
+    <span>Destino de viagem:</span>
+    <input type="text" id="ipt_destino"><br>
+
+    <button class="button" onclick="adicionar()">Adicionar</button><br>
+
+    <button class="button" onclick="primeira()">Primeira viagem</button>
+    <button class="button" onclick="terceira()">Terceira viagem</button>
+    <button class="button" onclick="ultima()">Última viagem</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let viagens = []
+
+    function adicionar() {
+        let destino = ipt_destino.value
+
+        viagens.push(destino)
+
+        ipt_destino.value = ""
+    }
+
+    function primeira() {
+        if (viagens.length == 0) {
+            div_exibir.innerHTML = `Ainda não viajou`
+        } else {
+            div_exibir.innerHTML = viagens[0]
+        }
+    }
+
+    function terceira() {
+        if (viagens.length < 3) {
+            div_exibir.innerHTML = `Ainda não fez a terceira viagem`
+        } else {
+            div_exibir.innerHTML = viagens[2]
+        }
+    }
+
+    function ultima() {
+        if (viagens.length == 0) {
+            div_exibir.innerHTML = `Ainda não viajou`
+        } else {
+            div_exibir.innerHTML = viagens[viagens.length - 1]
+        }
+    }
+</script>

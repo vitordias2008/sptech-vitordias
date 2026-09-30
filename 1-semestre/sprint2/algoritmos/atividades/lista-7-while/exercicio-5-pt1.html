@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 5</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">5. Corrida de Voltas</h1>
+
+    <span>Quantas voltas o carro dará?</span>
+    <input type="text" id="ipt_voltas"><br>
+
+    <button class="button" onclick="corrida()">Iniciar corrida!</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function corrida() {
+        let voltas = Number(ipt_voltas.value)
+        let contador = 1
+
+        div_exibir.innerHTML = ""
+
+        while (contador <= voltas) {
+            div_exibir.innerHTML += `Carro dando a ${contador}ª volta<br>`
+            contador += 1
+        }
+
+        div_exibir.innerHTML += `<b>Corrida finalizada!</b>`
+    }
+</script>

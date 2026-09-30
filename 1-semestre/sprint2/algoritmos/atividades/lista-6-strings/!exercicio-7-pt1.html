@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 7</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">7. Senha Forte ou Fraca</h1>
+
+    <span>Digite uma senha:</span>
+    <input type="text" id="ipt_senha" oninput="verificar()"><br>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function verificar() {
+        let senha = ipt_senha.value
+        let criterios = 0
+
+        if (senha.length >= 8) {
+            criterios += 1
+        }
+
+        if (senha != senha.toLowerCase()) {
+            criterios += 1
+        }
+
+        if (senha != senha.toUpperCase()) {
+            criterios += 1
+        }
+
+        if (criterios == 3) {
+            div_exibir.innerHTML = `<span style="color: green">Forte</span>`
+        } else if (criterios == 2) {
+            div_exibir.innerHTML = `<span style="color: orange">Média</span>`
+        } else if (criterios == 1) {
+            div_exibir.innerHTML = `<span style="color: red">Fraca</span>`
+        } else {
+            div_exibir.innerHTML = `<span style="color: red">Insegura</span>`
+        }
+    }
+</script>

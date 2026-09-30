@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 11</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">11. Tabuada Colorida</h1>
+
+    <span>Escolha a tabuada:</span>
+
+    <select id="ipt_tabuada">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select><br>
+
+    <span>Até qual número?</span>
+    <input type="text" id="ipt_limite"><br>
+
+    <button class="button" onclick="verTabuada()">Ver Tabuada</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function verTabuada() {
+        let tabuada = Number(ipt_tabuada.value)
+        let limite = Number(ipt_limite.value)
+        let contador = 1
+
+        div_exibir.innerHTML = ""
+
+        while (contador <= limite) {
+            let resultado = tabuada * contador
+
+            if (contador % 2 == 0) {
+                div_exibir.innerHTML += `<span style="color: blue">${tabuada} x ${contador} = ${resultado}</span><br>`
+            } else {
+   
+   
+   
+                div_exibir.innerHTML += `<span style="color: red">${tabuada} x ${contador} = ${resultado}</span><br>`
+            }
+
+            contador += 1
+        }
+    }
+</script>

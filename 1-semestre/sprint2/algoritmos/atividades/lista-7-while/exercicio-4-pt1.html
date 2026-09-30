@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 4</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">4. Expressar amor</h1>
+
+    <span>Digite o nome do amor da sua vida:</span>
+    <input type="text" id="ipt_amor"><br>
+
+    <span>Quanto você ama?</span>
+    <input type="text" id="ipt_quantidade"><br>
+
+    <button class="button" onclick="expressar()">Expressar amor</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function expressar() {
+        let amor = ipt_amor.value
+        let quantidade = Number(ipt_quantidade.value)
+        let contador = 1
+
+        div_exibir.innerHTML = ""
+
+        while (contador <= quantidade) {
+            div_exibir.innerHTML += `${contador} - ${amor}, eu te amo! Sempre lembre disso!<br>`
+            contador += 1
+        }
+    }
+</script>

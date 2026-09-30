@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 3</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input,
+        select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">3. Relembrando Moradias</h1>
+
+    <span>Digite um bairro:</span>
+    <input type="text" id="ipt_bairro" placeholder="Insira um bairro"><br>
+
+    <button class="button" onclick="cadastrar()">Cadastrar bairro</button><br>
+
+    <span>Qual moradia deseja relembrar?</span>
+    <input type="text" id="ipt_posicao" placeholder="Insira um numero"><br>
+
+    <button class="button" onclick="relembrar()">Relembrar moradia</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+    let bairros = []
+
+    function cadastrar() {
+
+        let bairro = ipt_bairro.value
+
+        bairros.push(bairro)
+
+        ipt_bairro.value = ""
+    }
+
+    function relembrar() {
+
+        let posicao = Number(ipt_posicao.value)
+
+        if (posicao > bairros.length) {
+            div_exibir.innerHTML = `Você ainda não morou num ${posicao}º bairro!`
+        } else {
+            div_exibir.innerHTML = bairros[posicao - 1]
+        }
+    }
+</script>

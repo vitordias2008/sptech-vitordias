@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 8</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">8. Jogo da Palavra Secreta</h1>
+
+    <span>Digite uma letra:</span>
+    <input type="text" id="ipt_letra"><br>
+
+    <button class="button" onclick="verificar()">Verificar Letras</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let palavraSecreta = "morango"
+
+    function verificar() {
+        let letra = ipt_letra.value.toLowerCase()
+
+        if (palavraSecreta.includes(letra)) {
+            div_exibir.innerHTML += `A letra ${letra} aparece na palavra secreta!<br>`
+        } else {
+            div_exibir.innerHTML += `A letra ${letra} não aparece na palavra secreta!`
+        }
+    }
+</script>

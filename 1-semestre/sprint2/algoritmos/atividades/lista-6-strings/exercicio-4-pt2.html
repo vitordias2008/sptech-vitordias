@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 4</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">4. Top Filmes Favoritos</h1>
+
+    <span>Digite um filme:</span>
+    <input type="text" id="ipt_filme"><br>
+
+    <button class="button" onclick="cadastrar()">Cadastrar filme</button><br>
+
+    <button class="button" onclick="verFavoritos()">Ver Favoritos</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let filmes = []
+    let listaFilmes = ""
+
+    function cadastrar() {
+        let filme = ipt_filme.value
+
+        filmes.push(filme)
+
+        listaFilmes += `${filme}<br>`
+
+        ipt_filme.value = ""
+    }
+
+    function verFavoritos() {
+        if (filmes.length == 0) {
+            div_exibir.innerHTML = `Nenhum filme cadastrado`
+        } else {
+            div_exibir.innerHTML = `
+                ${listaFilmes}
+                <br>
+                Total: ${filmes.length}<br>
+                O filme que mais gosta é ${filmes[0]}.<br>
+                E desses, o que menos gosta é ${filmes[filmes.length - 1]}.
+            `
+        }
+    }
+</script>
