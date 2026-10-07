@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>exercicio 3</title>
+    <title>exercicio 1 - pt2</title>
 
     <style>
         body {
@@ -22,8 +21,7 @@
             font-size: 20px;
         }
 
-        input,
-        select {
+        input, select {
             width: 200px;
             height: 30px;
             font-size: 18px;
@@ -50,46 +48,41 @@
     </style>
 
 </head>
-
 <body class="body">
-    <h1 class="h1">3. Relembrando Moradias</h1>
+    <h1 class="h1">16. Treino de Musculação</h1>
 
-    <span>Digite um bairro:</span>
-    <input type="text" id="ipt_bairro" placeholder="Insira um bairro"><br>
+    <span>Quantos dias você faz musculação</span>
+    <input type="text" id="ipt_musculacao"><br>
 
-    <button class="button" onclick="cadastrar()">Cadastrar bairro</button><br>
-
-    <span>Qual moradia deseja relembrar?</span>
-    <input type="text" id="ipt_posicao" placeholder="Insira um numero"><br>
-
-    <button class="button" onclick="relembrar()">Relembrar moradia</button>
+    <button class="button" onclick="rotinaMensal()">Exibir rotina mensal!</button>
 
     <div class="button" id="div_exibir"></div>
 </body>
-
 </html>
 
 <script>
-    let bairros = []
+    function rotinaMensal() {
+        let musculacao = Number(ipt_musculacao.value)
+        let contador = musculacao 
+        let dias = 0
+        let mensagem = ''
 
-    function cadastrar() {
+            while (dias < 30) {
+                dias += 1
+                if (contador == musculacao) {
+                    mensagem += `Dia ${dias} - Musculação <br>`
+                    contador = 1 
+                } else {
+                    mensagem += `Dia ${dias} - Comer, dormir etc <br>`                     
+                    contador += 1
+                }
+                
 
-        let bairro = ipt_bairro.value
+            }
 
-        bairros.push(bairro)
+            div_exibir.innerHTML = mensagem
 
-        ipt_bairro.value = ""
-    }
-
-    function relembrar() {
-
-        let posicao = Number(ipt_posicao.value)
-
-        if (posicao > bairros.length) {
-            div_exibir.innerHTML = `Você ainda não morou num ${posicao}º bairro!`
-        } else {
-            div_exibir.innerHTML = bairros[posicao - 1]
+        
         }
-    }
     
 </script>

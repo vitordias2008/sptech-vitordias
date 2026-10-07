@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 3 - pt3</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">19. Números Primos</h1>
+
+    <span>Insira um numero:</span>
+    <input type="text" id="ipt_numero"><br>
+    <span>(Entre 0 e 100)</span> <br><br>
+
+    <button class="button" onclick="divisor()">Ver divisores</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function divisor() {
+        let numero = Number(ipt_numero.value)
+        let contador = 0
+        let mensagem = `Divisores do Número ${numero}:`
+        let divisores = 0
+
+        if (numero >= 0 && numero <= 100){
+
+            while (contador <= numero) {
+                contador += 1
+
+                if (numero % contador == 0) {
+                    mensagem += `<br><br> ${contador} <br> `
+                    divisores += 1
+                }
+
+                
+            }
+
+            if (divisores == 2 && numero % numero == 0 && numero % 1 == 0)
+                mensagem += `<br>O número ${numero} é um numero primo`
+                div_exibir.innerHTML = mensagem
+
+
+        } else {
+            div_exibir.innerHTML = `<span class="erro">Valores inválidos!</span>`
+        }
+    }
+</script>

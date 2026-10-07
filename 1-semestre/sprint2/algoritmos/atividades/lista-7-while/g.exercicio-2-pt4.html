@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>exercicio 2 - pt4</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_msg {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>2 - Projetar Juros Compostos</h1>
+
+    <span>Entre com o valor mensal de depósito:</span>
+    <input id="ipt_deposito" type="number"><br>
+
+    <span>Entre com a quantidade de meses:</span>
+    <input id="ipt_meses" type="number"><br>
+
+    <span>Entre com o percentual de juros:</span>
+    <input id="ipt_juros" type="number"><br><br>
+
+    <span>Qual é o seu sonho:</span>
+    <input id="ipt_sonho"><br>
+
+    <span>Qual o valor do seu sonho:</span>
+    <input id="ipt_valorSonho" type="number"><br>
+
+    <button onclick="projetar()">Projetar</button>
+
+    <div id="div_msg"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function projetar() {
+
+        let deposito = Number(ipt_deposito.value)
+        let meses = Number(ipt_meses.value)
+        let percentualJuros = Number(ipt_juros.value)
+        let sonho = ipt_sonho.value
+        let valorSonho = Number(ipt_valorSonho.value)
+
+        let mensagem = ``
+
+        if (deposito <= 0) {
+
+            mensagem += `O valor do depósito deve ser maior que zero.<br>`
+
+        }
+
+        if (meses <= 0 || meses % 1 != 0) {
+
+            mensagem += `A quantidade de meses deve ser inteira e maior que zero.<br>`
+
+        }
+
+        if (percentualJuros <= 0 || percentualJuros >= 10) {
+
+            mensagem += `O percentual de juros deve ser maior que zero e menor que 10.<br>`
+
+        }
+
+        if (sonho.length < 3) {
+
+            mensagem += `O sonho deve possuir pelo menos 3 caracteres.<br>`
+
+        }
+
+        if (valorSonho <= 0 || valorSonho <= deposito) {
+
+            mensagem += `O valor do sonho deve ser maior que zero e maior que o depósito.<br>`
+
+        }
+
+
+        if (mensagem == ``) {
+
+            let mes = 1
+            let valorInicial = 0
+            let valorFinal = 0
+
+            while (mes <= meses) {
+
+                let juros = valorInicial * (percentualJuros / 100)
+
+                valorFinal = valorInicial + juros + deposito
+
+                mensagem += `Mês = ${mes} - 
+                Valor Inicial = R$ ${valorInicial.toFixed(2)} - 
+                Juros = R$ ${juros.toFixed(2)} - 
+                Depósito = R$ ${deposito.toFixed(2)} - 
+                Valor Final = R$ ${valorFinal.toFixed(2)}<br>`
+
+                valorInicial = valorFinal
+
+                mes += 1
+
+            }
+
+
+            if (valorFinal >= valorSonho) {
+
+                let sobra = valorFinal - valorSonho
+
+                mensagem += `<br>
+                Parabéns você é um POUPADOR, além do seu sonho de ${sonho} 
+                ainda sobrou R$ ${sobra.toFixed(2)} para outras aquisições`
+
+            } else {
+
+                let falta = valorSonho - valorFinal
+
+                mensagem += `<br>
+                Você precisa poupar um pouco mais. Para o sonho de ${sonho} 
+                ainda falta R$ ${falta.toFixed(2)}`
+
+            }
+
+        }
+
+
+        div_msg.innerHTML = mensagem
+
+    }
+
+</script>

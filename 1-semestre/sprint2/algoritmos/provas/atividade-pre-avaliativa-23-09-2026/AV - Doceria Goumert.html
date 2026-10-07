@@ -1,0 +1,142 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doxceria Gourmet</title>
+ </head>
+ <body>
+    
+    <h1>Doceria Gourmet🧁🍺🍪</h1>
+
+
+    <h2>Macarons</h2>
+    <span>Insira a quantidade de doce a ser vendido</span> <br> 
+    <input type="text" id="ipt_macarons"> <br>
+    <span>Insira o preço do doce:</span>  <br>
+    <input type="text" id="ipt_preco_macarons">
+    <br>
+    
+    <h2>Brigadeiros Gourmet</h2>
+    <span>Insira a quantidade de doce a ser vendido</span> <br>
+    <input type="text" id="ipt_brigadeiros"> <br>
+    <span>Insira o preço do doce:</span> <br>
+    <input type="text" id="ipt_preco_brigadeiros">
+    <br>
+    
+    <h2>Cupcake</h2>
+    <span>Insira a quantidade de doce a ser vendido</span> <br>
+    <input type="text" id="ipt_cupcakes"> <br>
+    <span>Insira o preço do doce:</span> <br>
+    <input type="text" id="ipt_preco_cupcakes">
+    <br>
+    
+    <h2>Chessecakes</h2>
+    <span>Insira a quantidade de doce a ser vendido</span> <br>
+    <input type="text" id="ipt_chessecakes"> <br>
+    <span>Insira o preço do doce:</span> <br>
+    <input type="text" id="ipt_preco_chessecakes">
+    <br>
+    <br>
+
+    <button onclick = "verificarVendas()">Verificar Vendas</button>
+
+
+    <br>
+
+    <div id="div_exibir"></div>
+ </body>
+ </html>
+
+ <script>
+
+    function verificarVendas() {
+        let macarons = Number(ipt_macarons.value)
+        let precoMacarons = Number(ipt_preco_macarons.value)
+
+        let brigadeiros = Number(ipt_brigadeiros.value)
+        let precoBrigadeiros = Number(ipt_preco_brigadeiros.value)
+
+        let cupcakes = Number(ipt_cupcakes.value)
+        let precoCupcakes = Number(ipt_preco_cupcakes.value)
+
+        let chessecakes = Number(ipt_chessecakes.value)
+        let precoChessecakes = Number(ipt_preco_chessecakes.value)
+
+        let contadorMacarons = 0
+        let contadorBrigadeiros = 0
+        let contadorCupcakes = 0
+        let contadorChessecakes = 0
+
+        let porcentagemMacarons = 0
+        let porcentagemBrigadeiros = 0
+        let porcentagemCupcakes = 0
+        let porcentagemChessecakes = 0
+
+        let venda = 0
+
+        let valorTotal = 0
+
+        let mensagem = ``
+    
+        if ((macarons > 0 && precoMacarons) > 0 ||
+            (brigadeiros > 0 && precoBrigadeiros) > 0 ||
+            (cupcakes > 0 && precoCupcakes) > 0 ||
+            (chessecakes > 0 && precoChessecakes) > 0 
+        ) {
+
+            while (contadorMacarons != macarons) {
+                venda += 1
+                mensagem += `<b style = "font-size: 30px">Venda ${venda} -  <img  style = "height: 70px; width: 70px;" src="https://static.wixstatic.com/media/0575df_8095ce1b01264728b02f80afbec8b46d~mv2.jpg/v1/fill/w_568,h_568,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/0575df_8095ce1b01264728b02f80afbec8b46d~mv2.jpg"> -  ${precoMacarons} <br> </b>`
+                contadorMacarons += 1
+                valorTotal += precoMacarons 
+            }
+
+            
+            while (contadorBrigadeiros != brigadeiros) {
+                venda += 1
+                mensagem += `<b style = "font-size: 30px">Venda ${venda} -  <img  style = "height: 70px; width: 70px;" src="https://www.marajoaraalimentos.com.br/2018/wp-content/uploads/2020/07/349-scaled.jpg"> -  ${precoBrigadeiros} <br></b>`
+                contadorBrigadeiros += 1 
+                valorTotal += precoBrigadeiros 
+            }
+
+            
+            while (contadorCupcakes != cupcakes) {
+                venda += 1
+                mensagem += `<b style = "font-size: 30px">Venda ${venda} -  <img  style = "height: 70px; width: 70px;" src="https://www.baking-sense.com/wp-content/uploads/2025/10/vanilla-cupcakes-featured.jpg"> -  ${precoCupcakes} <br></b>`
+                contadorCupcakes += 1 
+                valorTotal += precoCupcakes 
+            }
+
+            
+            while (contadorChessecakes != chessecakes) {
+                venda += 1
+                mensagem += `<b style = "font-size: 30px">Venda ${venda} -  <img  style = "height: 70px; width: 70px;" src="https://static.itdg.com.br/images/640-400/92a0875d2fa67349d1817aeeeaaf75b1/cheesecake-com-molho-de-morangos.jpg"> -  ${precoChessecakes} <br></b>`
+                contadorChessecakes += 1 
+                valorTotal += precoChessecakes 
+            }
+            
+            porcentagemMacarons = macarons / venda * 100
+            porcentagemBrigadeiros = brigadeiros / venda * 100
+            porcentagemCupcakes = cupcakes / venda * 100
+            porcentagemChessecakes = chessecakes / venda * 100
+
+
+
+            mensagem += `<br><br> <b style="color: pink; background-color: black; font-size: 30px;">Com a quantidade de ${macarons} Macarons (${porcentagemMacarons.toFixed(2)}% do total), ${brigadeiros} Brigadeiros (${porcentagemBrigadeiros.toFixed(2)}% do total), ${cupcakes} Cupcakes ${porcentagemCupcakes.toFixed(2)}% do total) e ${chessecakes} Cheesecakes (${porcentagemChessecakes.toFixed(2)}% do total), a venda totalizará R$${valorTotal}</b>`
+     
+            div_exibir.innerHTML = mensagem
+
+
+
+
+        } else {
+            div_exibir.innerHTML = `<b style= "color: red">Os valores estão invalidos</b>`
+        }
+    }
+
+
+
+
+
+ </script>

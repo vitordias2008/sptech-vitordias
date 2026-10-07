@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>exercicio 3</title>
+    <title>exercicio 20 - pt3</title>
 
     <style>
         body {
@@ -22,8 +21,7 @@
             font-size: 20px;
         }
 
-        input,
-        select {
+        input, select {
             width: 200px;
             height: 30px;
             font-size: 18px;
@@ -48,48 +46,45 @@
             font-size: 20px;
         }
     </style>
-
 </head>
 
 <body class="body">
-    <h1 class="h1">3. Relembrando Moradias</h1>
+    <h1 class="h1">20. Soma dos Pares</h1>
 
-    <span>Digite um bairro:</span>
-    <input type="text" id="ipt_bairro" placeholder="Insira um bairro"><br>
+    <span>Insira um numero:</span>
+    <input type="text" id="ipt_numero"><br>
+    <span>(Entre 10 e 500)</span> <br><br>
 
-    <button class="button" onclick="cadastrar()">Cadastrar bairro</button><br>
-
-    <span>Qual moradia deseja relembrar?</span>
-    <input type="text" id="ipt_posicao" placeholder="Insira um numero"><br>
-
-    <button class="button" onclick="relembrar()">Relembrar moradia</button>
+    <button class="button" onclick="somarPares()">Somar pares</button>
 
     <div class="button" id="div_exibir"></div>
 </body>
-
 </html>
 
 <script>
-    let bairros = []
+    function somarPares() {
+        let numero = Number(ipt_numero.value)
+        let contador = 0
+        let mensagem = ``
+        let soma = 0
 
-    function cadastrar() {
+        if (numero >= 10 && numero <= 500){
 
-        let bairro = ipt_bairro.value
+            while (contador <= numero) {
+                contador += 1
 
-        bairros.push(bairro)
+                if (contador % 2 == 0) {
+                    mensagem += `<br> ${contador} <br> `
+                    soma += contador
+                }
 
-        ipt_bairro.value = ""
-    }
+            }
+                mensagem += `<br> A soma dos numeros pares é: ${soma}`
+                div_exibir.innerHTML = mensagem
 
-    function relembrar() {
 
-        let posicao = Number(ipt_posicao.value)
-
-        if (posicao > bairros.length) {
-            div_exibir.innerHTML = `Você ainda não morou num ${posicao}º bairro!`
         } else {
-            div_exibir.innerHTML = bairros[posicao - 1]
+            div_exibir.innerHTML = `<span class="erro">Valores inválidos!</span>`
         }
     }
-    
 </script>

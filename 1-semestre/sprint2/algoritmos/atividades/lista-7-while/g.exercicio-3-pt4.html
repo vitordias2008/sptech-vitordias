@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>exercicio 3 - pt4</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>3 - Aluguéis pagos com pedras de ouro</h1>
+
+    <span>Quanto dinheiro possui no banco:</span>
+    <input type="number" id="ipt_dinheiro"><br>
+
+    <span>Quantas pedras de ouro possui:</span>
+    <input type="number" id="ipt_pedras"><br>
+
+    <span>Qual o valor do aluguel:</span>
+    <input type="number" id="ipt_aluguel"><br>
+
+    <span>Quantos meses de aluguel pagará por ano:</span>
+    <input type="number" id="ipt_meses"><br>
+
+    <span>Quantos anos pretende viver:</span>
+    <input type="number" id="ipt_anos"><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="div_exibir"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function calcular() {
+
+        let dinheiro = Number(ipt_dinheiro.value)
+        let pedras = Number(ipt_pedras.value)
+        let aluguel = Number(ipt_aluguel.value)
+        let mesesPorAno = Number(ipt_meses.value)
+        let anos = Number(ipt_anos.value)
+
+        let mensagem = ``
+
+
+        if (dinheiro < 0) {
+
+            mensagem += `O dinheiro no banco não pode ser negativo.<br>`
+
+        }
+
+        if (pedras < 0 || pedras % 1 != 0) {
+
+            mensagem += `A quantidade de pedras deve ser inteira e não pode ser negativa.<br>`
+
+        }
+
+        if (aluguel <= 0) {
+
+            mensagem += `O valor do aluguel deve ser maior que zero.<br>`
+
+        }
+
+        if (mesesPorAno <= 0 || mesesPorAno > 12 || mesesPorAno % 1 != 0) {
+
+            mensagem += `A quantidade de meses deve ser inteira, maior que zero e no máximo 12.<br>`
+
+        }
+
+        if (anos <= 0 || anos % 1 != 0) {
+
+            mensagem += `A quantidade de anos deve ser inteira e maior que zero.<br>`
+
+        }
+
+
+        if (mensagem == ``) {
+
+            let anoAtual = 1
+            let mesesPagos = 0
+            let faliu = false
+
+
+            while (anoAtual <= anos && faliu == false) {
+
+                mensagem += `<b>Ano - ${anoAtual}</b><br>`
+
+                let mesAtual = 1
+
+
+                while (mesAtual <= mesesPorAno && faliu == false) {
+
+                    let saldoInicial = dinheiro
+
+
+                    while (dinheiro < aluguel && pedras > 0) {
+
+                        dinheiro += 10000
+                        pedras -= 1
+
+                    }
+
+
+                    if (dinheiro >= aluguel) {
+
+                        dinheiro -= aluguel
+                        mesesPagos += 1
+
+                        mensagem += `Mês ${mesAtual} 
+                        saldo inicial no banco R$ ${saldoInicial.toFixed(2)} - 
+                        saldo de pedras = ${pedras} - 
+                        saldo final no banco R$ ${dinheiro.toFixed(2)}
+                        <br>`
+
+                    } else {
+
+                        faliu = true
+
+                    }
+
+
+                    mesAtual += 1
+
+                }
+
+
+                mensagem += `<br>`
+
+                anoAtual += 1
+
+            }
+
+
+            if (faliu == false) {
+
+                mensagem += `
+                Foram pagos ${mesesPagos} meses de aluguel e você ficou com 
+                R$ ${dinheiro.toFixed(2)} no banco e ${pedras} pedras de ouro
+                `
+
+            } else {
+
+                mensagem += `
+                Após ${mesesPagos} meses de aluguel você faliu!!!!
+                `
+
+            }
+
+        }
+
+
+        div_exibir.innerHTML = mensagem
+
+    }
+
+</script>

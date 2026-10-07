@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>AV - Coelho e a Tartaruga.🐢🐇</h1>
+
+    <span>O tamanho da pista (em metros):</span>
+    <input type="text" id="ipt_tamanho_pista">
+    <br>
+    <span>Quantos metros a tartaruga anda por rodada:</span>
+    <input type="text" id="ipt_tartaruga_andar">   
+    <br>
+    <span>Quantos metros a lebre anda por rodada:</span>
+    <input type="text" id="ipt_coelho_andar">
+    <br>
+    <span>A cada quantas rodadas o coelho dorme.:</span>
+    <input type="text" id="ipt_coelho_dormir"> 
+    <br>
+    <br>
+    <button onclick="DarALargada()">Dar a Largada!</button>
+
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+
+    function DarALargada() {
+    let tamanhoDaPista = Number(ipt_tamanho_pista.value)
+    let velTartaruga = Number(ipt_tartaruga_andar.value)
+    let velCoelho = Number(ipt_coelho_andar.value)
+    let dormirCoelho = Number(ipt_coelho_dormir.value)
+    let mensagem = ``
+    
+    
+
+        if ( tamanhoDaPista > 0 && velTartaruga > 0 && velCoelho > 0 && dormirCoelho > 0 &&
+             velTartaruga < velCoelho &&
+             dormirCoelho >= 2) {
+
+                
+        
+            let rodada = 0
+            let posicaoTartaruga = 0
+            let posicaoCoelho = 0
+            let contadorDormida = 0
+            let soneca = 0
+
+                while (posicaoCoelho < tamanhoDaPista && posicaoTartaruga < tamanhoDaPista) {
+
+                    rodada += 1
+                    contadorDormida += 1
+                    
+                    mensagem += `Rodada ${rodada}:`
+
+                    posicaoTartaruga += velTartaruga
+
+                    mensagem += ` Tartarugo ${posicaoTartaruga.toFixed(1)} m | `
+                    if (contadorDormida == dormirCoelho) {
+                        mensagem += `Coelho ${posicaoCoelho.toFixed(1)} m - Coelho dormindo <br>`
+                        contadorDormida = 0
+                        soneca += 1
+                    } else {
+                        posicaoCoelho += velCoelho
+                        mensagem += `Coelho ${posicaoCoelho.toFixed(1)} m <br> `
+                    }
+
+           
+                    if (posicaoCoelho, posicaoTartaruga >= tamanhoDaPista ) {
+
+                        let porcentagemCoelhoSoneca = soneca / rodada * 100   
+
+                        mensagem += `<br> Resultado: <br>`
+                        mensagem += `Coelhildo Soneca  e Tartarugo empataram na rodada ${rodada}! <br>`
+                        mensagem += `O coelho tirou ${soneca} sonecas, o que representa ${porcentagemCoelhoSoneca.toFixed(2)}% das rodadas.`
+                    } else if (posicaoTartaruga >= tamanhoDaPista) {
+
+                     let porcentagemCoelho = posicaoCoelho / tamanhoDaPista * 100
+                     let porcentagemCoelhoSoneca = soneca / rodada * 100   
+
+                        mensagem += `<br> Resultado: <br>`
+                        mensagem += `Tartarugo Devagarinho venceu na rodada ${rodada}! <br>`
+                        mensagem += `Coelhildo Soneca completou ${porcentagemCoelho.toFixed(2)}% da pista <br>`
+                        mensagem += `O coelho tirou ${soneca} sonecas, o que representa ${porcentagemCoelhoSoneca.toFixed(2)}% das rodadas."`
+                        
+                    } else if (posicaoCoelho >= tamanhoDaPista) {
+
+                     let porcentagemTartaruga = posicaoTartaruga / tamanhoDaPista * 100
+                     let porcentagemCoelhoSoneca = soneca / rodada * 100   
+
+                        mensagem += `<br> Resultado: <br>`
+                        mensagem += `Coelhildo Soneca venceu na rodada ${rodada}! <br>`
+                        mensagem += `Tartarugo Devagarinho completou ${porcentagemTartaruga.toFixed(2)}% da pista <br>`
+                        mensagem += `O coelho tirou ${soneca} sonecas, o que representa ${porcentagemCoelhoSoneca.toFixed(2)}% das rodadas.`
+                    }
+
+
+
+                    div_exibir.innerHTML = mensagem
+
+                
+                }
+             } else {
+            div_exibir.innerHTML = `<b style= "color: red">Os valores estão invalidos, corrija e tente novamente</b>`
+        }
+
+
+
+
+    }
+
+
+
+
+
+</script>

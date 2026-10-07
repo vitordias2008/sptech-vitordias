@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 2 - pt2</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">15. É tri/penta!</h1>
+
+    <span>Início do intervalo:</span>
+    <input type="text" id="ipt_inicio"><br>
+
+    <span>Fim do intervalo:</span>
+    <input type="text" id="ipt_fim"><br>
+
+
+
+    <button class="button" onclick="divisivelPor3e5()">Curto 3 e 5!</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function divisivelPor3e5() {
+        let inicio = Number(ipt_inicio.value)
+        let fim = Number(ipt_fim.value)
+
+        let contador = inicio
+        let mensagem = ''
+
+        if (inicio < fim ) {
+
+            while (contador <= fim) {
+                if (contador % 3 == 0 && contador % 5 == 0) {
+                    mensagem += `É TRI e PENTA! <br>`
+                } else if (contador % 3 == 0) {
+                    mensagem += `É TRI! <br>`
+                } else if (contador % 5 == 0) {
+                    mensagem += ` É PENTA! <br>`
+                } else {mensagem += `${contador} <br>`
+                }
+                contador += 1
+            
+            }
+
+            div_exibir.innerHTML = mensagem
+
+        } else {
+            div_exibir.innerHTML = `<span class="erro">Valores inválidos!</span>`
+        }
+    }
+</script>

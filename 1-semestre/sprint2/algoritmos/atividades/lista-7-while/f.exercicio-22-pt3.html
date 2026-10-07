@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 20 - pt3</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">22. Contagem Simples</h1>
+
+    <span>Insira um limite inferior:</span>
+    <input type="text" id="ipt_limite_inferior"><br>
+    <span>Insira um limite superior:</span>
+    <input type="text" id="ipt_limite_superior"><br>
+    <span>Insira um divisor:</span>
+    <input type="text" id="ipt_divisor"><br>
+    
+
+    <button class="button" onclick="contar()">Contar</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function contar() {
+        let limiteInferior = Number(ipt_limite_inferior.value)
+        let limiteSuperior = Number(ipt_limite_superior.value)
+        let divisor = Number(ipt_divisor.value)
+
+        let contador = limiteInferior
+        let exibidos = 0
+        let soma = 0
+        let maior = 0
+        let menor = 0
+        let mensagem = ''
+
+        if (!(limiteInferior > 1)) {
+            div_exibir.innerHTML = `<span class="erro">
+                O limite inferior deve ser maior que 1!
+            </span>`
+
+        } else if (!(limiteSuperior < 100 && limiteSuperior > limiteInferior)) {
+            div_exibir.innerHTML = `<span class="erro">
+                O limite superior deve ser menor que 100 e maior que o limite inferior!
+            </span>`
+
+        } else if (!(divisor >= 3 && divisor <= 10)) {
+            div_exibir.innerHTML = `<span class="erro">
+                O divisor deve estar entre 3 e 10!
+            </span>`
+
+        } else {
+            while (contador <= limiteSuperior) {
+              
+                if (contador % divisor == 0) {
+                    
+                    if (exibidos == 0) {
+                        menor = contador
+                    } else {
+                        mensagem += ', '
+                    }
+
+                    mensagem += contador
+                    exibidos += 1
+                    soma += contador
+                    maior = contador
+                }
+
+                contador += 1
+            }
+
+            if (exibidos > 0) {
+                let media = soma / exibidos
+
+                mensagem += `<br><br>
+                    QUANTIDADE TOTAL DE NÚMEROS EXIBIDOS: ${exibidos}<br>
+                    SOMATÓRIO DOS NÚMEROS EXIBIDOS: ${soma}<br>
+                    MÉDIA DOS NÚMEROS EXIBIDOS: ${media.toFixed(2).replace('.', ',')}<br>
+                    MAIOR NÚMERO EXIBIDO: ${maior}<br>
+                    MENOR NÚMERO EXIBIDO: ${menor}
+                `
+            } 
+
+            div_exibir.innerHTML = mensagem
+        }
+    }
+</script>

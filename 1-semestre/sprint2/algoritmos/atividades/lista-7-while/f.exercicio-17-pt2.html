@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 17 - pt2</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: left;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        button {
+            width: 250px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #div_exibir {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="h1">17. Um elefante, incomoda muita gente...</h1>
+
+    <span>Quantidade de Elefantes 🐘</span>
+    <input type="text" id="ipt_elefantes"><br>
+
+    <button class="button" onclick="incomodar()">Atazanar a médium!</button>
+
+    <div class="button" id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+
+    function incomodar() {
+        let elefantes = Number(ipt_elefantes.value)
+        let contador = 1
+        let mensagem = ''
+        let incomodar = 0
+
+    if (elefantes >= 2)  {
+        while (elefantes > contador) {
+            contador += 1
+
+
+            mensagem = `<b>1</b> elefante incomoda muita gente! <br>`
+            mensagem += `<b>${contador}</b> elefantes `
+                
+                    while (incomodar != contador) {
+                        mensagem += 'incomodam, '
+                        incomodar += 1
+                    }
+        
+        mensagem += `muito mais!`
+        incomodar = 0   
+        div_exibir.innerHTML = mensagem
+
+
+        }
+
+
+
+
+
+        
+        } else div_exibir.innerHTML = `<b class= "erro">Insira uma quantidade de elefantes maior ou igual a 2</b>`
+    }
+
+
+</script>
