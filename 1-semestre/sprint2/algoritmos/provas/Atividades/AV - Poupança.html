@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: left;">
+    <h1 style="color: green; font-size: 50px;">Poupança</h1>
+
+    <span style="background-color: antiquewhite; ">Quantidade de depositos:</span>
+    <Input id="ipt_depositos"></INput><br>
+    
+    <span style="background-color: antiquewhite">Valor dos depositos:</span>
+    <INput id="ipt_valor"></INput><br>
+
+    <span style="background-color: antiquewhite;">Intervalo de meses até o bônus ser aplicado:</span>
+    <INput id="ipt_bonus"></INput><br>
+
+    <button onclick="grana()">Acompanhar Grana!</button>
+    
+    
+    <div id="div_exibir"></div>
+    
+
+
+        </div>
+    
+
+</body>
+</html>
+<script>
+
+function grana() {
+
+let depositos = Number(ipt_depositos.value)
+let valor = Number(ipt_valor.value)
+let bonus = Number(ipt_bonus.value)
+
+let meses = 0
+let totalDinheiro = 0
+let contadorBonus = 1
+let mensagem = '<br> <b style = "font-style: bold; font-size: 25px; background-color: lightgreen"> Depositos: </b><br><br>'
+
+    while ( meses != depositos ) {
+        meses++
+        totalDinheiro += valor
+        
+        if (contadorBonus == bonus) {
+            totalDinheiro += totalDinheiro * 0.01
+            mensagem += `<b style = "font-style: bold; font-size: 25px">${meses}° Mês: <b style = "color: green; background-color: antiquewhite">R$:${totalDinheiro.toFixed(2)} ⭐ </b></b><br>`
+            contadorBonus = 1
+        } else {
+            mensagem += `<b style = "font-style: bold; font-size: 25px">${meses}° Mês: <b style = "color: green">R$:${totalDinheiro.toFixed(2)}</b></b><br>`
+            contadorBonus += 1
+        }
+ 
+    }
+
+        mensagem += `<br> <b style = "font-style: bold; font-size: 25px">Total guardado:  <b style = "color: green"; background-color: lightgreen"> R$:${totalDinheiro.toFixed(2)}</b></b>`
+        div_exibir.innerHTML = mensagem
+
+}
+
+
+</script>

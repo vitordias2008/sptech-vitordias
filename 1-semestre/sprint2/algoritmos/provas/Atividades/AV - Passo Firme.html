@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Acessoria de Corrida 🏃‍♂️</h1>
+
+    <span>Distância inicial semanal do aluno (em km).:</span>
+    <input type="text" id="ipt_distancia">
+    <br>
+    <span>O percentual de aumento semanal desejado (de 0 a 10):</span>
+    <input type="text" id="ipt_aumento_semanal">   
+    <br>
+    <span>A meta de distância semanal (em km).:</span>
+    <input type="text" id="ipt_meta_semanal">
+    <br>
+    <span>O número máximo de semanas do plano.:</span>
+    <input type="text" id="ipt_semanas_maximo"> 
+    <br>
+    <br>
+    <button onclick="planilha()">Gerar Planilha</button>
+
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+
+    function planilha() {
+
+    let distancia= Number(ipt_distancia.value)
+    let aumentoSemanal= Number(ipt_aumento_semanal.value)
+    let meta= Number(ipt_meta_semanal.value)
+    let semanasMaximo= Number(ipt_semanas_maximo.value)
+
+    let semana = 1
+    let percentualMeta = distancia / meta * 100
+    let totalKm = distancia
+    
+
+        if (distancia <= 0) {
+            mensagem = `A distância  não pode ser menor ou igual a 0`
+            div_exibir.innerHTML = mensagem
+        } else if (aumentoSemanal < 1 || aumentoSemanal > 10) {
+            mensagem = `O percentual de aumento não pode ser menor que 1 ou maior que 10 (regra dos 10%);`
+            div_exibir.innerHTML = mensagem
+        } else if (meta <= distancia) {
+            mensagem = `A meta não pode ser menor ou igual à distância inicial`
+            div_exibir.innerHTML = mensagem
+        } else if (semanasMaximo < 1 || semanasMaximo > 24) {
+            mensagem = `O número de semanas não pode ser menor que 1 ou maior que 24.`
+            div_exibir.innerHTML = mensagem
+        } else {
+            
+            mensagem = `<b style = "font-size: 30px; color: red; background-color: antiquewhite">Programa Passo Firme: </b><br> <br>`
+            mensagem += `Meta ${semana} - ${distancia} km (${percentualMeta.toFixed(2)}% da Meta) <br>`
+            
+            while (distancia < meta && semana < semanasMaximo) {
+            
+                semana += 1
+                mensagem += `Meta ${semana} - `
+            
+                if (semana % 4 == 0) {
+                    mensagem += `${(distancia * 0.7).toFixed(2)} Km `
+                    totalKm += (distancia * 0.7)
+                } else {
+                    distancia = distancia + (distancia * (aumentoSemanal / 100))
+                    mensagem += `${distancia.toFixed(2)} Km `
+                    totalKm += distancia
+                }
+                
+                percentualMeta = distancia / meta * 100
+                mensagem += `(${percentualMeta.toFixed(2)}% da Meta) <br>`
+            }
+
+            
+            if (distancia >= meta) {
+                mensagem += `<br>Meta de ${meta}km atingida na semana ${semana}! Total acumulado no plano ${totalKm.toFixed(2)} Km.`
+            } else {
+                mensagem += `<br> Meta não atingida em ${semana} semanas. A última semana chegou a ${percentualMeta.toFixed(2)}% da meta. Total acumulado no plano: ${totalKm.toFixed(2)} km.`
+            }
+
+            div_exibir.innerHTML = mensagem
+
+        }
+        
+
+
+    }
+
+
+</script>
